@@ -20,6 +20,7 @@ import (
 
 func main() {
 	sensors, err := gosensors.NewFromSystem()
+	// sensors, err := gosensors.NewFromFile("/path/to/log.txt")
 
 	if err != nil {
 		panic(err)
