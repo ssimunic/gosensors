@@ -1,4 +1,5 @@
 # gosensors
+[![GoDoc](https://godoc.org/github.com/ssimunic/gosensors?status.png)](http://godoc.org/github.com/ssimunic/gosensors)
 
 Hardware sensors using Go and lm-sensors
 
