@@ -12,11 +12,9 @@ import (
 // Content field contains string output.
 // Chips field contains map[string]Entries.
 // Example (JSON style):
-// {
-// 		"coretemp-isa-0000": {
-//			"CPU": "+60.0°C",
-//			"GPU": "+48.0°C",
-// 		}
+// "coretemp-isa-0000": {
+//	"CPU": "+60.0°C",
+//	"GPU": "+48.0°C",
 // }
 type Sensors struct {
 	Content string             `json:"-"`
@@ -25,10 +23,8 @@ type Sensors struct {
 
 // Entries representing key, value pairs for chips.
 // Example (JSON style):
-// {
-// 		"GPU": "+56.0°C"
-// 		"CPU": "+68.0°C"
-// }
+// "GPU": "+56.0°C"
+// "CPU": "+68.0°C"
 type Entries map[string]string
 
 func construct(content string) *Sensors {
