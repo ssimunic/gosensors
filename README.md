@@ -20,7 +20,7 @@ import (
 )
 
 func main() {
-	sensorsOptions := gosensors.NewSensorOptions()
+	sensorsOptions := gosensors.NewSensorsOptions()
 	sensorsOptions.UseFahrenheit = false
 
 	sensors, err := gosensors.NewFromSystem(sensorsOptions)

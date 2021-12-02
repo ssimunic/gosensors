@@ -61,7 +61,7 @@ func construct(content string) *Sensors {
 }
 
 // NewSensorOptions returns SensorsOptions struct with default values.
-func NewSensorOptions() SensorsOptions {
+func NewSensorsOptions() SensorsOptions {
 	return SensorsOptions{
 		IgnoreAdapters: false,
 		UseFahrenheit:  false,
