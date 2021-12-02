@@ -20,7 +20,10 @@ import (
 )
 
 func main() {
-	sensors, err := gosensors.NewFromSystem()
+	sensorsOptions := gosensors.NewSensorOptions()
+	sensorsOptions.UseFahrenheit = false
+
+	sensors, err := gosensors.NewFromSystem(sensorsOptions)
 	// sensors, err := gosensors.NewFromFile("/path/to/log.txt")
 
 	if err != nil {
