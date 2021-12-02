@@ -8,6 +8,14 @@ import (
 	"strings"
 )
 
+// Sensors struct represents lm-sensors options.
+// -A, --no-adapter      Do not show adapter for each chip
+// -f, --fahrenheit      Show temperatures in degrees fahrenheit
+type SensorsOptions struct {
+	IgnoreAdapters bool
+	UseFahrenheit  bool
+}
+
 // Sensors struct represents lm-sensors output.
 // Content field contains string output.
 // Chips field contains map[string]Entries.
@@ -52,10 +60,25 @@ func construct(content string) *Sensors {
 	return s
 }
 
+// NewSensorOptions returns SensorsOptions struct with default values.
+func NewSensorOptions() SensorsOptions {
+	return SensorsOptions{
+		IgnoreAdapters: false,
+		UseFahrenheit:  false,
+	}
+}
+
 // NewFromSystem executes "sensors" system command and returns constructed Sensors struct.
 // A successful call returns err == nil.
-func NewFromSystem() (*Sensors, error) {
-	out, err := exec.Command("sensors").Output()
+func NewFromSystem(options SensorsOptions) (*Sensors, error) {
+	args := make([]string, 0)
+	if options.IgnoreAdapters {
+		args = append(args, "--no-adapter")
+	}
+	if options.UseFahrenheit {
+		args = append(args, "--fahrenheit")
+	}
+	out, err := exec.Command("sensors", args...).Output()
 	if err != nil {
 		return &Sensors{}, errors.New("lm-sensors missing")
 	}
